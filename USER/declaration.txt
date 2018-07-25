@@ -1,0 +1,15 @@
+IO 占用情况：
+		串口  2：PA2 PA3
+		LED  : PF9
+		ADC  : PC3            连接ccd 的 os端信号输出
+		CCD  : PB10 --> SH
+			   A1 --> ICG
+			   PB1 --> Qm
+		背光源： PF8
+	   
+	   IIC: PB8 -- SCL
+			PB9 -- SDA
+sht30地址：0x44/0x45
+
+	  
+	  
