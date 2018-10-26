@@ -144,11 +144,11 @@ void DMA1_Stream5_IRQHandler(void)
 
 		if(nRxBuffer[3]==1) //说明是要求响应的  [3]是1说明是召唤命令
 		{
-			if(nRxBuffer[2]==my_id)
+			if(nRxBuffer[2]==ID)
 				echo_pc = 1;
 		}		
 		/* Check the key before doing anything */
-	 	else if ((nRxBuffer[0]==69)&&(nRxBuffer[1]==82)&&(nRxBuffer[10]==my_id))
+	 	else if ((nRxBuffer[0]==69)&&(nRxBuffer[1]==82)&&(nRxBuffer[10]==ID))
 		{ 
 				/* reset the key */
 				nRxBuffer[0] = 0;

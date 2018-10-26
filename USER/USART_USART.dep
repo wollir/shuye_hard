@@ -1,7 +1,7 @@
 Dependencies for Project 'USART', Target 'USART': (DO NOT MODIFY !)
 F (.\declaration.txt)(0x5A56CADB)()
 F (..\ccd\ADC_conf.c)(0x5921B09B)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\CORE -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I..\USER -I..\HARDWARE\LED -I..\HARDWARE\BEEP -I..\HARDWARE\KEY -I..\FWLIB\inc -I..\HARDWARE\ADC -I..\HARDWARE\PWM -I..\ccd -I.\my_task -I..\HARDWARE\delay -I..\HARDWARE\calman -I..\HARDWARE\sht30-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\adc_conf.o --omf_browse ..\obj\adc_conf.crf --depend ..\obj\adc_conf.d)
-I (..\ccd\main.h)(0x5AEFB324)
+I (..\ccd\main.h)(0x5BD06772)
 I (..\USER\stm32f4xx.h)(0x542BA483)
 I (..\CORE\core_cm4.h)(0x53C7D530)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x53463A44)
@@ -46,8 +46,8 @@ I (..\HARDWARE\sht30\myiic.h)(0x5A56C5E3)
 I (..\SYSTEM\sys\sys.h)(0x53B52F5F)
 I (..\SYSTEM\delay\delay.h)(0x59117E4A)
 I (..\HARDWARE\calman\kalman.h)(0x59A6AE50)
-F (..\ccd\main.c)(0x5AEFFEB4)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\CORE -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I..\USER -I..\HARDWARE\LED -I..\HARDWARE\BEEP -I..\HARDWARE\KEY -I..\FWLIB\inc -I..\HARDWARE\ADC -I..\HARDWARE\PWM -I..\ccd -I.\my_task -I..\HARDWARE\delay -I..\HARDWARE\calman -I..\HARDWARE\sht30-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
-I (..\ccd\main.h)(0x5AEFB324)
+F (..\ccd\main.c)(0x5BD077AC)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\CORE -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I..\USER -I..\HARDWARE\LED -I..\HARDWARE\BEEP -I..\HARDWARE\KEY -I..\FWLIB\inc -I..\HARDWARE\ADC -I..\HARDWARE\PWM -I..\ccd -I.\my_task -I..\HARDWARE\delay -I..\HARDWARE\calman -I..\HARDWARE\sht30-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+I (..\ccd\main.h)(0x5BD06772)
 I (..\USER\stm32f4xx.h)(0x542BA483)
 I (..\CORE\core_cm4.h)(0x53C7D530)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x53463A44)
@@ -92,8 +92,8 @@ I (..\HARDWARE\sht30\myiic.h)(0x5A56C5E3)
 I (..\SYSTEM\sys\sys.h)(0x53B52F5F)
 I (..\SYSTEM\delay\delay.h)(0x59117E4A)
 I (..\HARDWARE\calman\kalman.h)(0x59A6AE50)
-F (..\ccd\stm32f4xx_it.c)(0x5A055A29)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\CORE -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I..\USER -I..\HARDWARE\LED -I..\HARDWARE\BEEP -I..\HARDWARE\KEY -I..\FWLIB\inc -I..\HARDWARE\ADC -I..\HARDWARE\PWM -I..\ccd -I.\my_task -I..\HARDWARE\delay -I..\HARDWARE\calman -I..\HARDWARE\sht30-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f4xx_it.o --omf_browse ..\obj\stm32f4xx_it.crf --depend ..\obj\stm32f4xx_it.d)
-I (..\ccd\main.h)(0x5AEFB324)
+F (..\ccd\stm32f4xx_it.c)(0x5BCE945C)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\CORE -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I..\USER -I..\HARDWARE\LED -I..\HARDWARE\BEEP -I..\HARDWARE\KEY -I..\FWLIB\inc -I..\HARDWARE\ADC -I..\HARDWARE\PWM -I..\ccd -I.\my_task -I..\HARDWARE\delay -I..\HARDWARE\calman -I..\HARDWARE\sht30-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f4xx_it.o --omf_browse ..\obj\stm32f4xx_it.crf --depend ..\obj\stm32f4xx_it.d)
+I (..\ccd\main.h)(0x5BD06772)
 I (..\USER\stm32f4xx.h)(0x542BA483)
 I (..\CORE\core_cm4.h)(0x53C7D530)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x53463A44)
@@ -174,7 +174,7 @@ I (..\FWLIB\inc\stm32f4xx_dac.h)(0x53DBAFAD)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x53DBAFAD)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x53DBAFAD)
 F (..\ccd\timer_conf.c)(0x59269F69)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\CORE -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I..\USER -I..\HARDWARE\LED -I..\HARDWARE\BEEP -I..\HARDWARE\KEY -I..\FWLIB\inc -I..\HARDWARE\ADC -I..\HARDWARE\PWM -I..\ccd -I.\my_task -I..\HARDWARE\delay -I..\HARDWARE\calman -I..\HARDWARE\sht30-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\timer_conf.o --omf_browse ..\obj\timer_conf.crf --depend ..\obj\timer_conf.d)
-I (..\ccd\main.h)(0x5AEFB324)
+I (..\ccd\main.h)(0x5BD06772)
 I (..\USER\stm32f4xx.h)(0x542BA483)
 I (..\CORE\core_cm4.h)(0x53C7D530)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x53463A44)
@@ -220,7 +220,7 @@ I (..\SYSTEM\sys\sys.h)(0x53B52F5F)
 I (..\SYSTEM\delay\delay.h)(0x59117E4A)
 I (..\HARDWARE\calman\kalman.h)(0x59A6AE50)
 F (..\ccd\UART_conf.c)(0x5A59F9C3)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\CORE -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I..\USER -I..\HARDWARE\LED -I..\HARDWARE\BEEP -I..\HARDWARE\KEY -I..\FWLIB\inc -I..\HARDWARE\ADC -I..\HARDWARE\PWM -I..\ccd -I.\my_task -I..\HARDWARE\delay -I..\HARDWARE\calman -I..\HARDWARE\sht30-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\uart_conf.o --omf_browse ..\obj\uart_conf.crf --depend ..\obj\uart_conf.d)
-I (..\ccd\main.h)(0x5AEFB324)
+I (..\ccd\main.h)(0x5BD06772)
 I (..\USER\stm32f4xx.h)(0x542BA483)
 I (..\CORE\core_cm4.h)(0x53C7D530)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x53463A44)
@@ -302,7 +302,7 @@ I (..\FWLIB\inc\stm32f4xx_dac.h)(0x53DBAFAD)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x53DBAFAD)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x53DBAFAD)
 I (..\ccd\stm32_eval_legacy.h)(0x54A3BD32)
-F (.\my_task\wer_task.c)(0x5AF00328)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\CORE -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I..\USER -I..\HARDWARE\LED -I..\HARDWARE\BEEP -I..\HARDWARE\KEY -I..\FWLIB\inc -I..\HARDWARE\ADC -I..\HARDWARE\PWM -I..\ccd -I.\my_task -I..\HARDWARE\delay -I..\HARDWARE\calman -I..\HARDWARE\sht30-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\wer_task.o --omf_browse ..\obj\wer_task.crf --depend ..\obj\wer_task.d)
+F (.\my_task\wer_task.c)(0x5BD077AC)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\CORE -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I..\USER -I..\HARDWARE\LED -I..\HARDWARE\BEEP -I..\HARDWARE\KEY -I..\FWLIB\inc -I..\HARDWARE\ADC -I..\HARDWARE\PWM -I..\ccd -I.\my_task -I..\HARDWARE\delay -I..\HARDWARE\calman -I..\HARDWARE\sht30-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\wer_task.o --omf_browse ..\obj\wer_task.crf --depend ..\obj\wer_task.d)
 I (my_task\wer_task.h)(0x5AEFFEB4)
 I (..\HARDWARE\sht30\sht30.h)(0x5AB85924)
 I (..\HARDWARE\sht30\myiic.h)(0x5A56C5E3)
@@ -343,6 +343,11 @@ I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x53DBAFAD)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x53DBAFAD)
 I (..\SYSTEM\delay\delay.h)(0x59117E4A)
 I (..\ccd\UART_conf.h)(0x591AF166)
+I (..\ccd\main.h)(0x5BD06772)
+I (..\ccd\stm32f4xx_it.h)(0x58E3A0BA)
+I (..\ccd\timer_conf.h)(0x58E3A0BA)
+I (..\ccd\ADC_conf.h)(0x58E3A0BA)
+I (..\HARDWARE\calman\kalman.h)(0x59A6AE50)
 F (..\HARDWARE\delay\delay.c)(0x5920E6D0)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\CORE -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I..\USER -I..\HARDWARE\LED -I..\HARDWARE\BEEP -I..\HARDWARE\KEY -I..\FWLIB\inc -I..\HARDWARE\ADC -I..\HARDWARE\PWM -I..\ccd -I.\my_task -I..\HARDWARE\delay -I..\HARDWARE\calman -I..\HARDWARE\sht30-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\delay.o --omf_browse ..\obj\delay.crf --depend ..\obj\delay.d)
 I (..\HARDWARE\delay\delay.h)(0x53ECC03B)
 I (..\SYSTEM\sys\sys.h)(0x53B52F5F)

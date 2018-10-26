@@ -40,3 +40,9 @@
 ..\obj\wer_task.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\wer_task.o: ..\SYSTEM\delay\delay.h
 ..\obj\wer_task.o: ..\ccd\UART_conf.h
+..\obj\wer_task.o: ..\ccd\main.h
+..\obj\wer_task.o: ..\ccd\stm32f4xx_it.h
+..\obj\wer_task.o: ..\ccd\timer_conf.h
+..\obj\wer_task.o: ..\ccd\ADC_conf.h
+..\obj\wer_task.o: ..\ccd\UART_conf.h
+..\obj\wer_task.o: ..\HARDWARE\calman\kalman.h

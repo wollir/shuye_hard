@@ -8,7 +8,8 @@
 #define RxDataSize 12
 #define RealDataSize 3648
 #define UsedSize 60
-#define my_id (u8)2
+#define ID (u8)3
+#define CHANNAL 0X17
 /* CCD master clock in Hz */
 /* The values presented here are the prescalable frequencies between
    1-2MHz with the STM32F401RE running at 84 MHz. Other frequencies

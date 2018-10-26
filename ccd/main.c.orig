@@ -45,7 +45,7 @@ u8 kalman_test[10] = {20,40,70,100,200,170,110,150,190,130};
 u8 kalman_out[10] ={0}; 
 int main(void)
 {
-	int  i= 0;
+int i;
 	sht_data temp_hum;
 	kalman_struct kal_stu;
 	kalman_struct *kal = &kal_stu;
@@ -121,7 +121,7 @@ int main(void)
 			start_mesure();
 			temp_hum = sht30_read();
 #ifdef wireless			
-		  wer_send(0x01);wer_send(0x00);wer_send(CHANNAL);// 主机地址
+		  wer_send(0x00);wer_send(ID);wer_send(CHANNAL);// 主机地址
 #endif
 			wer_send(0xfe);wer_send(0x01);
 			send_data(sorted_data,UsedSize);
@@ -133,7 +133,7 @@ int main(void)
 		if(echo_pc){   //扫描时候回应
 			//ledB2(1);
 #ifdef wireless
-			wer_send(0x01);wer_send(0x00);wer_send(CHANNAL);// 主机地址
+			wer_send(0x00);wer_send(ID);wer_send(CHANNAL);// 主机地址
 #endif
 				wer_send(0xff);wer_send(0x02);// 扫描帧头
 				echo_data[0] =ID;

@@ -1,6 +1,7 @@
 #include "wer_task.h"
 #include "delay.h"
 #include "UART_conf.h"
+#include "main.h"
 void led_B2_init(void)
 {
   GPIO_InitTypeDef  GPIO_InitStructure;
@@ -19,12 +20,12 @@ void led_B2_init(void)
 }
 void send_data(unsigned char* data,int datasize)  // 要以什么格式发送，先看上位机以什么格式收。
 {
-	int i,j;
-	for(i = 0; i<datasize-4;i++)
+	int i = 0;
+	for(; i<datasize-4;i++)
 		wer_send(data[i]);
 		//delay_ms(500);
 #ifdef wireless			
-		  wer_send(0x00);wer_send(0x00);wer_send(0x17);// 主机地址
+		  wer_send(0x01);wer_send(0x00);wer_send(CHANNAL);// 主机地址
 #endif
 	for(; i<datasize;i++){
 		wer_send(data[i]);
