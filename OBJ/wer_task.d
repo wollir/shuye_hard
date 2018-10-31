@@ -44,5 +44,4 @@
 ..\obj\wer_task.o: ..\ccd\stm32f4xx_it.h
 ..\obj\wer_task.o: ..\ccd\timer_conf.h
 ..\obj\wer_task.o: ..\ccd\ADC_conf.h
-..\obj\wer_task.o: ..\ccd\UART_conf.h
 ..\obj\wer_task.o: ..\HARDWARE\calman\kalman.h

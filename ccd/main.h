@@ -8,7 +8,7 @@
 #define RxDataSize 12
 #define RealDataSize 3648
 #define UsedSize 60
-#define ID (u8)3
+#define ID (u16)3
 #define CHANNAL 0X17
 /* CCD master clock in Hz */
 /* The values presented here are the prescalable frequencies between

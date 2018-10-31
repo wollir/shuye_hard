@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\USART.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\USART.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5040049: Last Updated: Wed Oct 24 21:46:22 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5040049: Last Updated: Wed Oct 31 11:47:15 2018
 <BR><P>
 <H3>Maximum Stack Usage =        188 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -124,8 +124,8 @@ Function Pointers
 Global Symbols
 </H3>
 <P><STRONG><a name="[60]"></a>__main</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, __main.o(!!!main))
-<BR><BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
-<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
+<BR><BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
 </UL>
 
 <P><STRONG><a name="[61]"></a>__scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter))
@@ -211,8 +211,8 @@ Global Symbols
 <P><STRONG><a name="[103]"></a>__rt_lib_shutdown_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000B))
 
 <P><STRONG><a name="[62]"></a>__rt_entry</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtentry.o(.ARM.Collect$$rtentry$$00000000))
-<BR><BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
+<BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
+<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
 </UL>
 
 <P><STRONG><a name="[104]"></a>__rt_entry_presh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtentry2.o(.ARM.Collect$$rtentry$$00000002))
@@ -302,7 +302,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[6c]"></a>main</STRONG> (Thumb, 460 bytes, Stack size 32 bytes, main.o(.text))
+<P><STRONG><a name="[6c]"></a>main</STRONG> (Thumb, 524 bytes, Stack size 32 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 188<LI>Call Chain = main &rArr; USART2_conf &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
 <BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wer_send
@@ -323,6 +323,7 @@ Global Symbols
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ADC_conf
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SortFrom3648
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Init
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;virtual_GND
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_conf
@@ -359,25 +360,27 @@ Global Symbols
 <P><STRONG><a name="[b]"></a>SysTick_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
-<P><STRONG><a name="[1c]"></a>DMA1_Stream5_IRQHandler</STRONG> (Thumb, 136 bytes, Stack size 16 bytes, stm32f4xx_it.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = DMA1_Stream5_IRQHandler &rArr; DMA_GetITStatus
+<P><STRONG><a name="[1c]"></a>DMA1_Stream5_IRQHandler</STRONG> (Thumb, 158 bytes, Stack size 8 bytes, stm32f4xx_it.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = DMA1_Stream5_IRQHandler &rArr; DMA_GetITStatus
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sort_aRxBuffer
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetITStatus
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_ClearITPendingBit
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
-<P><STRONG><a name="[44]"></a>DMA2_Stream0_IRQHandler</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, stm32f4xx_it.o(.text))
+<P><STRONG><a name="[44]"></a>DMA2_Stream0_IRQHandler</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, stm32f4xx_it.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = DMA2_Stream0_IRQHandler &rArr; DMA_GetITStatus
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetITStatus
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_ClearITPendingBit
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
-<P><STRONG><a name="[3e]"></a>TIM5_IRQHandler</STRONG> (Thumb, 96 bytes, Stack size 8 bytes, stm32f4xx_it.o(.text))
+<P><STRONG><a name="[3e]"></a>TIM5_IRQHandler</STRONG> (Thumb, 80 bytes, Stack size 8 bytes, stm32f4xx_it.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = TIM5_IRQHandler &rArr; TIM_GetITStatus
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
@@ -965,11 +968,14 @@ Global Symbols
 <P><STRONG><a name="[87]"></a>GPIO_SetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[1c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Stream5_IRQHandler
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_B2_init
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;virtual_GND
 </UL>
 
 <P><STRONG><a name="[86]"></a>GPIO_ResetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR><BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA2_Stream0_IRQHandler
+<LI><a href="#[1c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Stream5_IRQHandler
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;virtual_GND
 </UL>
 
@@ -1125,8 +1131,8 @@ Global Symbols
 <P><STRONG><a name="[140]"></a>RCC_ClearITPendingBit</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(.text), UNUSED)
 
 <P><STRONG><a name="[c7]"></a>USART_DeInit</STRONG> (Thumb, 206 bytes, Stack size 8 bytes, stm32f4xx_usart.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphResetCmd
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
+<BR><BR>[Calls]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphResetCmd
 </UL>
 
 <P><STRONG><a name="[ab]"></a>USART_Init</STRONG> (Thumb, 204 bytes, Stack size 48 bytes, stm32f4xx_usart.o(.text))
@@ -1299,8 +1305,8 @@ Global Symbols
 <P><STRONG><a name="[175]"></a>ADC_ClearITPendingBit</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f4xx_adc.o(.text), UNUSED)
 
 <P><STRONG><a name="[cc]"></a>TIM_DeInit</STRONG> (Thumb, 346 bytes, Stack size 8 bytes, stm32f4xx_tim.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphResetCmd
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
+<BR><BR>[Calls]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphResetCmd
 </UL>
 
 <P><STRONG><a name="[a1]"></a>TIM_TimeBaseInit</STRONG> (Thumb, 104 bytes, Stack size 0 bytes, stm32f4xx_tim.o(.text))

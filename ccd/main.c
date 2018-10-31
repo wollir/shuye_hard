@@ -2,7 +2,7 @@
 void virtual_GND(void);
 void flush_CCD(void);
 void NVIC_conf(void);
-
+extern u8 isalert; //通知上位机是否已经报警
 extern u8 echo_pc;
 __IO uint32_t SH_period = 25;
 __IO uint32_t ICG_period = 500000;
@@ -15,7 +15,6 @@ __IO uint8_t nRxBuffer[RxDataSize] = {0};
 
 __IO uint8_t change_exposure_flag = 0;
 __IO uint8_t transmit_data_flag = 0;
-//__IO uint8_t pc_ready_flag = 0;
 __IO uint8_t pulse_counter = 0;
 __IO uint8_t CCD_flushed = 0;
 
@@ -41,11 +40,12 @@ float after_calman[RealDataSize] = {0};
 /* Other GPIOs
 	PA0, PB0, PB2 and PC2 are driven low
 	PA5 (LED) is enabled (but driven low by default) */
-u8 kalman_test[10] = {20,40,70,100,200,170,110,150,190,130};
-u8 kalman_out[10] ={0}; 
+//u8 kalman_test[10] = {20,40,70,100,200,170,110,150,190,130};
+//u8 kalman_out[10] ={0}; 
 int main(void)
 {
 	int  i= 0;
+
 	sht_data temp_hum;
 	kalman_struct kal_stu;
 	kalman_struct *kal = &kal_stu;
@@ -126,22 +126,30 @@ int main(void)
 			wer_send(0xfe);wer_send(0x01);
 			send_data(sorted_data,UsedSize);
 			send_TempHumi(temp_hum);
-			wer_send(ID);
+			wer_send(ID>>8);
+			wer_send(ID&0xff);
+			wer_send(isalert);
+			wer_send(0); //预留
 			back_ledF8(0); //将背光源 关闭
 			//UART2_Tx_DMA();
+			ledF9(1);
+			ledF10(1);
 		}
 		if(echo_pc){   //扫描时候回应
-			//ledB2(1);
 #ifdef wireless
 			wer_send(0x01);wer_send(0x00);wer_send(CHANNAL);// 主机地址
 #endif
-				wer_send(0xff);wer_send(0x02);// 扫描帧头
-				echo_data[0] =ID;
+			wer_send(0xff);wer_send(0x02);// 扫描帧头
+		  echo_data[0] =ID>>8;
+			echo_data[1] =ID&0xff;
 			send_data(echo_data,UsedSize);//凑字数
 			wer_send(8);//凑字数
-			wer_send(8);wer_send(8);wer_send(8);wer_send(8);
+			wer_send(8);wer_send(8);wer_send(8);wer_send(8);wer_send(8);wer_send(8);wer_send(8);
 			echo_pc = 0;
 			//delay_ms(200);
+		}
+		if(isalert){ //下位机报警，
+			
 		}
 	}
 }
@@ -181,7 +189,7 @@ void virtual_GND(void)
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8|GPIO_Pin_9|GPIO_Pin_10;
     GPIO_Init(GPIOF, &GPIO_InitStructure);
 	GPIO_ResetBits(GPIOF,GPIO_Pin_8);
-	GPIO_SetBits(GPIOF,GPIO_Pin_10);
+	GPIO_SetBits(GPIOF,GPIO_Pin_9|GPIO_Pin_10);
 }
 /* Run this function prior to datacollection */
 void flush_CCD()

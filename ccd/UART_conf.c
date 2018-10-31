@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include "uart_conf.h"
 extern __IO uint16_t aTxBuffer[CCDSize];
 extern __IO uint8_t aRxBuffer[RxDataSize];
 extern __IO	uint8_t nRxBuffer[RxDataSize];

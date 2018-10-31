@@ -1,6 +1,6 @@
 #include "main.h"
-
 u8 echo_pc = 0;
+u8 isalert = 0; //通知上位机是否已经报警
 /******************************************************************************/
 /*            Cortex-M4 Processor Exceptions Handlers                         */
 /******************************************************************************/
@@ -130,37 +130,35 @@ void DMA1_Stream5_IRQHandler(void)
 {
 	if(DMA_GetITStatus(DMA1_Stream5, DMA_IT_TCIF5)) 
 	{
-		int i = 0 ,j = 0;
+		int i = 0;
 		/* Clear DMA Stream Transfer Complete interrupt */
 		DMA_ClearITPendingBit(DMA1_Stream5, DMA_IT_TCIF5);  
-
+		
 		/* Wait a short while - to let DMA finish ..or something */
 		
-		for (j=0;j<100;j++)
+		//for (j=0;j<100;j++)
 		for (i=0;i<8400;i++);
-
+		ledF9(0);
 		/* Sort aRxBuffer into nRxBuffer */	
 		sort_aRxBuffer();
 
-		if(nRxBuffer[3]==1) //说明是要求响应的  [3]是1说明是召唤命令
+		if(nRxBuffer[4]==1 && ((nRxBuffer[2]<<8)|nRxBuffer[3]) == ID) //说明是要求响应的  [3]是1说明是召唤命令
 		{
-			if(nRxBuffer[2]==ID)
 				echo_pc = 1;
 		}		
 		/* Check the key before doing anything */
-	 	else if ((nRxBuffer[0]==69)&&(nRxBuffer[1]==82)&&(nRxBuffer[10]==ID))
+	 	else if ((nRxBuffer[0]==69)&&(nRxBuffer[1]==82)&&(((nRxBuffer[10]<<8)|nRxBuffer[11])==ID))
 		{ 
 				/* reset the key */
 				nRxBuffer[0] = 0;
 				nRxBuffer[1] = 0;
-
+				isalert = nRxBuffer[2];  //通知下位机是否报警
 				/* set flags for main-loop */
 				change_exposure_flag = 1;
 				transmit_data_flag = 0;
 				//pc_ready_flag = nRxBuffer[10];
 				back_ledF8(1); //收到正确得东西，将背光源打开
 		}
-//		GPIOA->ODR ^= GPIO_Pin_5;
 	}
 }
 
@@ -180,6 +178,7 @@ void DMA2_Stream0_IRQHandler(void)
 		/* Set the transmit_data_flag */
 		transmit_data_flag = 1;
 //		GPIOA->ODR ^= GPIO_Pin_5;
+		ledF10(0);
 	}
 }
 
@@ -207,7 +206,7 @@ void TIM5_IRQHandler(void)
 			pulse_counter = 10;
 
 		/* Flash the led to the beat of ICG */
-		GPIOF->ODR ^= GPIO_Pin_9;
+		//GPIOF->ODR ^= GPIO_Pin_9;
 	}
 
 }
