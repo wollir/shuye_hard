@@ -43,5 +43,6 @@
 ..\obj\adc_conf.o: ..\HARDWARE\sht30\sht30.h
 ..\obj\adc_conf.o: ..\HARDWARE\sht30\myiic.h
 ..\obj\adc_conf.o: ..\SYSTEM\sys\sys.h
+..\obj\adc_conf.o: ..\ccd\main.h
 ..\obj\adc_conf.o: ..\SYSTEM\delay\delay.h
 ..\obj\adc_conf.o: ..\HARDWARE\calman\kalman.h

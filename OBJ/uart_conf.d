@@ -43,5 +43,6 @@
 ..\obj\uart_conf.o: ..\HARDWARE\sht30\sht30.h
 ..\obj\uart_conf.o: ..\HARDWARE\sht30\myiic.h
 ..\obj\uart_conf.o: ..\SYSTEM\sys\sys.h
+..\obj\uart_conf.o: ..\ccd\main.h
 ..\obj\uart_conf.o: ..\SYSTEM\delay\delay.h
 ..\obj\uart_conf.o: ..\HARDWARE\calman\kalman.h

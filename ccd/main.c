@@ -2,8 +2,8 @@
 void virtual_GND(void);
 void flush_CCD(void);
 void NVIC_conf(void);
-extern u8 isalert; //通知上位机是否已经报警
-extern u8 echo_pc;
+extern __IO u8 isalert; //通知上位机是否已经报警
+extern __IO u8 echo_pc;
 __IO uint32_t SH_period = 25;
 __IO uint32_t ICG_period = 500000;
 //__IO uint32_t SH_period = 250;
@@ -52,7 +52,7 @@ int main(void)
 	/* virtual_GND() enables GPIOA, GPIOB and GPIOC clocks */
 	virtual_GND();
 	NVIC_conf();
-	led_B2_init();
+	//led_B2_init();
 	//ledB2(0);
 	//GPIO_SetBits(GPIOB,GPIO_Pin_2);//GPIOF9,F10???,??
 	//GPIO_ResetBits(GPIOB,GPIO_Pin_2);
@@ -130,10 +130,10 @@ int main(void)
 			wer_send(ID&0xff);
 			wer_send(isalert);
 			wer_send(0); //预留
-			back_ledF8(0); //将背光源 关闭
+			back_led(1); //将背光源 关闭
 			//UART2_Tx_DMA();
-			ledF9(1);
-			ledF10(1);
+			leda(1);
+			ledb(1);
 		}
 		if(echo_pc){   //扫描时候回应
 #ifdef wireless
@@ -147,6 +147,7 @@ int main(void)
 			wer_send(8);wer_send(8);wer_send(8);wer_send(8);wer_send(8);wer_send(8);wer_send(8);
 			echo_pc = 0;
 			//delay_ms(200);
+			leda(1);
 		}
 		if(isalert){ //下位机报警，
 			
@@ -185,11 +186,18 @@ void virtual_GND(void)
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_2;
     GPIO_Init(GPIOB, &GPIO_InitStructure);
 
-	/* Setup LED (PA5) */  //---PF9
+	/* Setup LED (PA6) Setup LED (PA7) Setup backgruand—_LED (PA4)*/  //---PF9
+#if	(ID == 1)
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6|GPIO_Pin_7|GPIO_Pin_4;
+  GPIO_Init(GPIOA, &GPIO_InitStructure);
+	GPIO_ResetBits(GPIOA,GPIO_Pin_4);
+	GPIO_SetBits(GPIOA,GPIO_Pin_6|GPIO_Pin_7);
+#else
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8|GPIO_Pin_9|GPIO_Pin_10;
-    GPIO_Init(GPIOF, &GPIO_InitStructure);
+  GPIO_Init(GPIOF, &GPIO_InitStructure);
 	GPIO_ResetBits(GPIOF,GPIO_Pin_8);
 	GPIO_SetBits(GPIOF,GPIO_Pin_9|GPIO_Pin_10);
+#endif
 }
 /* Run this function prior to datacollection */
 void flush_CCD()

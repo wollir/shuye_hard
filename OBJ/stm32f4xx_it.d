@@ -43,5 +43,6 @@
 ..\obj\stm32f4xx_it.o: ..\HARDWARE\sht30\sht30.h
 ..\obj\stm32f4xx_it.o: ..\HARDWARE\sht30\myiic.h
 ..\obj\stm32f4xx_it.o: ..\SYSTEM\sys\sys.h
+..\obj\stm32f4xx_it.o: ..\ccd\main.h
 ..\obj\stm32f4xx_it.o: ..\SYSTEM\delay\delay.h
 ..\obj\stm32f4xx_it.o: ..\HARDWARE\calman\kalman.h

@@ -3,21 +3,18 @@
 <pre>
 <h1>礦ision Build Log</h1>
 <h2>Project:</h2>
-C:\Users\wer\Desktop\shuyeping\code\hard\shuye_hard\USER\USART.uvprojx
+C:\Users\wer\Desktop\shuyeping\code\hard\second_node\USER\USART.uvprojx
 Project File Date:  01/13/2018
 
 <h2>Output:</h2>
 Build target 'USART'
 compiling main.c...
-compiling stm32f4xx_it.c...
 linking...
-Program Size: Code=16072 RO-data=456 RW-data=60 ZI-data=27404  
+Program Size: Code=16032 RO-data=456 RW-data=60 ZI-data=27404  
 FromELF: creating hex file...
 "..\OBJ\USART.axf" - 0 Error(s), 0 Warning(s).
-</pre>
-</body>
-</html>
-shuyeping\code\hard\shuye_hard\USER\JLinkSettings.ini"
+Load "..\\OBJ\\USART.axf" 
+Set JLink Project File to "C:\Users\wer\Desktop\shuyeping\code\hard\second_node\USER\JLinkSettings.ini"
 * JLink Info: Device "STM32F407ZG" selected (1024 KB flash, 128 KB RAM).
  
 JLink info:
@@ -51,3 +48,40 @@ Erase Done.
 Programming Done.
 Verify OK.
 Application running ...
+</pre>
+</body>
+</html>
+: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 1000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+192
+Watchpoints:          4
+JTAG speed: 1000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+cd\stm32f4xx_it.c(145): error:  #18: expected a ")"
+                if(nRxBuffer[4]==1 && ((nRxBuffer[2]<<8)|nRxBuffer[3]) == ID) //说明是要求响应的  [3]是1说明是召唤命令
+..\ccd\stm32f4xx_it.c(150): error:  #10: "#" not expected here
+                else if ((nRxBuffer[0]==69)&&(nRxBuffer[1]==82)&&(((nRxBuffer[10]<<8)|nRxBuffer[11])==ID))
+..\ccd\stm32f4xx_it.c(150): error:  #18: expected a ")"
+                else if ((nRxBuffer[0]==69)&&(nRxBuffer[1]==82)&&(((nRxBuffer[10]<<8)|nRxBuffer[11])==ID))
+..\ccd\stm32f4xx_it.c(133): warning:  #177-D: variable "j" was declared but never referenced
+                int i = 0,j=0;
+..\ccd\stm32f4xx_it.c: 1 warning, 4 errors
+compiling timer_conf.c...
+compiling UART_conf.c...
+compiling wer_task.c...
+my_task\wer_task.c(28): error:  #20: identifier "CHANNAL" is undefined
+                  wer_send(0x01);wer_send(0x00);wer_send(CHANNAL);// 主机地址
+my_task\wer_task.c: 0 warnings, 1 error
+"..\OBJ\USART.axf" - 17 Error(s), 1 Warning(s).
+Target not created

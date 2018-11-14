@@ -1,6 +1,6 @@
 #include "main.h"
-u8 echo_pc = 0;
-u8 isalert = 0; //通知上位机是否已经报警
+__IO u8 echo_pc = 0;
+__IO u8 isalert = 0; //通知上位机是否已经报警
 /******************************************************************************/
 /*            Cortex-M4 Processor Exceptions Handlers                         */
 /******************************************************************************/
@@ -17,8 +17,7 @@ extern __IO uint8_t transmit_data_flag;
 extern __IO uint8_t pulse_counter;
 extern __IO uint8_t CCD_flushed;
 
-
-
+static u8 isRightStart = 0;// 启动标志，处理刚开机就发东西的问题
 
 /**
   * @brief  This function handles NMI exception.
@@ -130,15 +129,15 @@ void DMA1_Stream5_IRQHandler(void)
 {
 	if(DMA_GetITStatus(DMA1_Stream5, DMA_IT_TCIF5)) 
 	{
-		int i = 0;
+		int i = 0,j=0;
 		/* Clear DMA Stream Transfer Complete interrupt */
 		DMA_ClearITPendingBit(DMA1_Stream5, DMA_IT_TCIF5);  
 		
 		/* Wait a short while - to let DMA finish ..or something */
 		
-		//for (j=0;j<100;j++)
+		//for(j=0;j<100;j++)
 		for (i=0;i<8400;i++);
-		ledF9(0);
+		leda(0);
 		/* Sort aRxBuffer into nRxBuffer */	
 		sort_aRxBuffer();
 
@@ -155,9 +154,8 @@ void DMA1_Stream5_IRQHandler(void)
 				isalert = nRxBuffer[2];  //通知下位机是否报警
 				/* set flags for main-loop */
 				change_exposure_flag = 1;
-				transmit_data_flag = 0;
 				//pc_ready_flag = nRxBuffer[10];
-				back_ledF8(1); //收到正确得东西，将背光源打开
+				back_led(0); //收到正确得东西，将背光源打开
 		}
 	}
 }
@@ -176,9 +174,14 @@ void DMA2_Stream0_IRQHandler(void)
 		TIM4->CR1 &= (uint16_t)~TIM_CR1_CEN;
 
 		/* Set the transmit_data_flag */
-		transmit_data_flag = 1;
+		if(!isRightStart){
+			isRightStart = 1;
+			return;
+		}
+			transmit_data_flag = 1;
+		
 //		GPIOA->ODR ^= GPIO_Pin_5;
-		ledF10(0);
+		ledb(0);
 	}
 }
 

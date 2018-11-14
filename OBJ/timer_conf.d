@@ -43,5 +43,6 @@
 ..\obj\timer_conf.o: ..\HARDWARE\sht30\sht30.h
 ..\obj\timer_conf.o: ..\HARDWARE\sht30\myiic.h
 ..\obj\timer_conf.o: ..\SYSTEM\sys\sys.h
+..\obj\timer_conf.o: ..\ccd\main.h
 ..\obj\timer_conf.o: ..\SYSTEM\delay\delay.h
 ..\obj\timer_conf.o: ..\HARDWARE\calman\kalman.h
