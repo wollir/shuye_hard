@@ -1,6 +1,11 @@
 #include "main.h"
+#include "wer_task.h"
+#include "UART_conf.h"
+#include "key.h"
+#include "delay.h"
 __IO u8 echo_pc = 0;
 __IO u8 isalert = 0; //通知上位机是否已经报警
+__IO u8 isalerted = 0;
 /******************************************************************************/
 /*            Cortex-M4 Processor Exceptions Handlers                         */
 /******************************************************************************/
@@ -116,7 +121,23 @@ void SysTick_Handler(void)
 {
 
 }
+void EXTI4_IRQHandler(void)
+{   
+	  /*延时消抖*/
+		delay_ms(10);	  		 
+     /*检查指定的EXTI13线路触发请求发生与否*/	
+    if(EXTI_GetITStatus(EXTI_Line4) != RESET)
+		{   
+			if(isalert==1){
+				isalert = 0; //不报警了
+				isalerted = 1; // 报警完成
+				beep(1);
+			}
+		}
+		/*清除EXTI13线路挂起位*/
+	 EXTI_ClearITPendingBit(EXTI_Line4); 
 
+}
 /******************************************************************************/
 /*                 STM32F4xx Peripherals Interrupt Handlers                   */
 /*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */
@@ -152,6 +173,9 @@ void DMA1_Stream5_IRQHandler(void)
 				nRxBuffer[0] = 0;
 				nRxBuffer[1] = 0;
 				isalert = nRxBuffer[2];  //通知下位机是否报警
+			if(isalert){  //蜂鸣器响起
+				beep(0);
+			}
 				/* set flags for main-loop */
 				change_exposure_flag = 1;
 				//pc_ready_flag = nRxBuffer[10];
@@ -179,9 +203,6 @@ void DMA2_Stream0_IRQHandler(void)
 			return;
 		}
 			transmit_data_flag = 1;
-		
-//		GPIOA->ODR ^= GPIO_Pin_5;
-		ledb(0);
 	}
 }
 

@@ -1,9 +1,20 @@
 #include "main.h"
+#include "key.h"
+#include "wer_task.h"
+#include "timer_conf.h"
+#include "delay.h"
+#include "ADC_conf.h"
+#include "UART_conf.h"
+#include "kalman.h"
+#include "myiic.h"
+#include "sht30.h"
+
 void virtual_GND(void);
 void flush_CCD(void);
 void NVIC_conf(void);
 extern __IO u8 isalert; //通知上位机是否已经报警
 extern __IO u8 echo_pc;
+extern __IO u8 isalerted;//下位机是否已经报警完成。同志上位机输液结束
 __IO uint32_t SH_period = 25;
 __IO uint32_t ICG_period = 500000;
 //__IO uint32_t SH_period = 250;
@@ -45,7 +56,6 @@ float after_calman[RealDataSize] = {0};
 int main(void)
 {
 	int  i= 0;
-
 	sht_data temp_hum;
 	kalman_struct kal_stu;
 	kalman_struct *kal = &kal_stu;
@@ -53,7 +63,6 @@ int main(void)
 	virtual_GND();
 	NVIC_conf();
 	//led_B2_init();
-	//ledB2(0);
 	//GPIO_SetBits(GPIOB,GPIO_Pin_2);//GPIOF9,F10???,??
 	//GPIO_ResetBits(GPIOB,GPIO_Pin_2);
 	/* Setup CCD_fM (TIM3) and ADC-timer (TIM4) */
@@ -69,12 +78,14 @@ int main(void)
 /* Setup ICG (TIM5) and SH (TIM2) */
 	TIM_ICG_SH_conf();
 	delay_init(84);
+	KEY_Init();
+	EXTI_Config();//按键中断初始化
 	//flush_CCD();
 	kalman_init(kal,150,0.01);
 	IIC_Init();
 	
 	while(1) 	
-	{
+	{		
 		if (change_exposure_flag == 1)
 		{
 			/* reset flag */
@@ -128,12 +139,11 @@ int main(void)
 			send_TempHumi(temp_hum);
 			wer_send(ID>>8);
 			wer_send(ID&0xff);
-			wer_send(isalert);
+			wer_send(isalerted);isalerted = 0; //报警标志再设置回来
 			wer_send(0); //预留
 			back_led(1); //将背光源 关闭
 			//UART2_Tx_DMA();
 			leda(1);
-			ledb(1);
 		}
 		if(echo_pc){   //扫描时候回应
 #ifdef wireless
@@ -149,12 +159,8 @@ int main(void)
 			//delay_ms(200);
 			leda(1);
 		}
-		if(isalert){ //下位机报警，
-			
-		}
 	}
 }
-
 /* 	To keep noise-level on ADC-in down, the following GPIO's are
 	set as output, driven low and physically connected to GND:
 		PA0 and PC2 which are physically close to PC3 (ADC-in)

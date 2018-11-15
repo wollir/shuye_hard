@@ -47,8 +47,8 @@ void send_TempHumi(sht_data data)
 void SortFrom3648(u8* data,u8* target_data,int target_datasize)
 {
 		int i;
-    short frequency_demultiplication =3648/target_datasize;  // 3648/60=60.8
-    for(i = 1 ;i < 3648;i+=frequency_demultiplication)
+    short frequency_demultiplication =3648/target_datasize;  // 3648/60=60.8 ×Ü¹²
+    for(i = 24 ;i < 3648-24;i+=frequency_demultiplication)
     {
         target_data[i/frequency_demultiplication]= data[i];
     }

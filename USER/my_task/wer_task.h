@@ -11,7 +11,7 @@ void led_B2_init(void);
 void SortFrom3648(u8* data,u8* target_data,int target_datasize);
 void send_TempHumi(sht_data data);
 
-#define	ledB2(a)      {if(a) GPIO_SetBits(GPIOB,GPIO_Pin_2); else	GPIO_ResetBits(GPIOB,GPIO_Pin_2);}//
+#define	ledb2(a)      {if(a) GPIO_SetBits(GPIOB,GPIO_Pin_2); else	GPIO_ResetBits(GPIOB,GPIO_Pin_2);}//
 
 #define	ledA6(a)      {if(a) GPIO_SetBits(GPIOA,GPIO_Pin_6); else	GPIO_ResetBits(GPIOA,GPIO_Pin_6);}//
 #define	ledA7(a)      {if(a) GPIO_SetBits(GPIOA,GPIO_Pin_7); else	GPIO_ResetBits(GPIOA,GPIO_Pin_7);}//
@@ -20,11 +20,11 @@ void send_TempHumi(sht_data data);
 
 #if (ID == 1)
 	#define leda(a)  ledA6(a)
-	#define ledb(a)  ledA7(a)
+	#define beep(a)  ledA7(a)
 	#define	back_led(a) {if(!a) GPIO_SetBits(GPIOA,GPIO_Pin_4); else	GPIO_ResetBits(GPIOA,GPIO_Pin_4);}//
 #else
 	#define leda(a)  ledF9(a)
-	#define ledb(a)  ledF10(a)
+	#define beep(a)  ledF10(a)
 	#define	back_led(a) {if(!a) GPIO_SetBits(GPIOF,GPIO_Pin_8); else	GPIO_ResetBits(GPIOF,GPIO_Pin_8);}//
 #endif
 	

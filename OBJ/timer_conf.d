@@ -35,14 +35,3 @@
 ..\obj\timer_conf.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\timer_conf.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\timer_conf.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
-..\obj\timer_conf.o: ..\ccd\stm32f4xx_it.h
-..\obj\timer_conf.o: ..\ccd\timer_conf.h
-..\obj\timer_conf.o: ..\ccd\ADC_conf.h
-..\obj\timer_conf.o: ..\ccd\UART_conf.h
-..\obj\timer_conf.o: .\my_task\wer_task.h
-..\obj\timer_conf.o: ..\HARDWARE\sht30\sht30.h
-..\obj\timer_conf.o: ..\HARDWARE\sht30\myiic.h
-..\obj\timer_conf.o: ..\SYSTEM\sys\sys.h
-..\obj\timer_conf.o: ..\ccd\main.h
-..\obj\timer_conf.o: ..\SYSTEM\delay\delay.h
-..\obj\timer_conf.o: ..\HARDWARE\calman\kalman.h

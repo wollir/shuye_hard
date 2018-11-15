@@ -10,7 +10,6 @@
 #define UsedSize 60
 #define ID 3
 #define CHANNAL 0X17
-
 #define wireless
 /* CCD master clock in Hz */
 /* The values presented here are the prescalable frequencies between
@@ -37,14 +36,4 @@
 /* UART definitions */
 #define BAUDRATE 9600
 
-
-#include "stm32f4xx_it.h"
-#include "timer_conf.h"
-#include "ADC_conf.h"
-#include "UART_conf.h"
-#include "wer_task.h"
-#include "delay.h"
-#include "kalman.h"
-#include "myiic.h"
-#include "sht30.h"
 #endif

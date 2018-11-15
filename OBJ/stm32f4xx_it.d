@@ -35,14 +35,10 @@
 ..\obj\stm32f4xx_it.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\stm32f4xx_it.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\stm32f4xx_it.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
-..\obj\stm32f4xx_it.o: ..\ccd\stm32f4xx_it.h
-..\obj\stm32f4xx_it.o: ..\ccd\timer_conf.h
-..\obj\stm32f4xx_it.o: ..\ccd\ADC_conf.h
-..\obj\stm32f4xx_it.o: ..\ccd\UART_conf.h
 ..\obj\stm32f4xx_it.o: .\my_task\wer_task.h
 ..\obj\stm32f4xx_it.o: ..\HARDWARE\sht30\sht30.h
 ..\obj\stm32f4xx_it.o: ..\HARDWARE\sht30\myiic.h
 ..\obj\stm32f4xx_it.o: ..\SYSTEM\sys\sys.h
-..\obj\stm32f4xx_it.o: ..\ccd\main.h
+..\obj\stm32f4xx_it.o: ..\ccd\UART_conf.h
+..\obj\stm32f4xx_it.o: ..\HARDWARE\KEY\key.h
 ..\obj\stm32f4xx_it.o: ..\SYSTEM\delay\delay.h
-..\obj\stm32f4xx_it.o: ..\HARDWARE\calman\kalman.h
