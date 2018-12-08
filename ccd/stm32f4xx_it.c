@@ -124,6 +124,7 @@ void SysTick_Handler(void)
 void EXTI4_IRQHandler(void)
 {   
 	  /*延时消抖*/
+	//wer_send(0x01);wer_send(0x00);wer_send(0x17); wer_send('a');
 		delay_ms(10);	  		 
      /*检查指定的EXTI13线路触发请求发生与否*/	
     if(EXTI_GetITStatus(EXTI_Line4) != RESET)
@@ -133,6 +134,7 @@ void EXTI4_IRQHandler(void)
 				isalerted = 1; // 报警完成
 				beep(1);
 			}
+			 
 		}
 		/*清除EXTI13线路挂起位*/
 	 EXTI_ClearITPendingBit(EXTI_Line4); 

@@ -13,9 +13,8 @@
 //Copyright(C) 广州市星翼电子科技有限公司 2014-2024
 //All rights reserved									  
 ////////////////////////////////////////////////////////////////////////////////// 	 
-#if (ID == 1)
-
-#else
+//#if (ID == 1) ||(ID == 3)
+#if 0
 
 //按键初始化函数
 void KEY_Init(void)
@@ -31,6 +30,22 @@ void KEY_Init(void)
   GPIO_Init(GPIOE, &GPIO_InitStructure);//初始化GPIOE2,3,4
  
 } 
+#else
+void KEY_Init(void)
+{
+	
+	GPIO_InitTypeDef  GPIO_InitStructure;
+	// PE4 按键0
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);//使能GPIOC时钟
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);//?????SYSCFG??
+	
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4; //KEY0 KEY1 KEY2对应引脚
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;//普通输入模式
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;//100M
+  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;//上拉
+  GPIO_Init(GPIOC, &GPIO_InitStructure);//初始化GPIOE2,3,4
+}
+
 //按键处理函数
 //返回按键值
 //mode:0,不支持连续按;1,支持连续按;
@@ -82,7 +97,7 @@ void EXTI_Config(void)
 
  	EXTI_InitTypeDef EXTI_InitStructure;
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);//??SYSCFG??
-	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource4);//PE4 ??????4
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOC, EXTI_PinSource4);//PC0 ??????4
 	
 	/* ??EXTI_Line4 */
 	EXTI_InitStructure.EXTI_Line = EXTI_Line4;
@@ -91,8 +106,7 @@ void EXTI_Config(void)
   EXTI_InitStructure.EXTI_LineCmd = ENABLE;//?????
   EXTI_Init(&EXTI_InitStructure);//??
 		/*???????NVIC*/
-    NVIC_Configuration();
-	
+  NVIC_Configuration();
 }
 
 

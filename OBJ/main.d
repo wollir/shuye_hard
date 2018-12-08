@@ -2,7 +2,7 @@
 ..\obj\main.o: ..\ccd\main.h
 ..\obj\main.o: ..\USER\stm32f4xx.h
 ..\obj\main.o: ..\CORE\core_cm4.h
-..\obj\main.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+..\obj\main.o: d:\Keil_v526\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\main.o: ..\CORE\core_cmInstr.h
 ..\obj\main.o: ..\CORE\core_cmFunc.h
 ..\obj\main.o: ..\CORE\core_cm4_simd.h

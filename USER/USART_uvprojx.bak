@@ -472,6 +472,11 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\sht30\myiic.c</FilePath>
             </File>
+            <File>
+              <FileName>sht30.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\sht30\sht30.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

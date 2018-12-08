@@ -4,7 +4,7 @@
 ..\obj\sht30.o: ..\SYSTEM\sys\sys.h
 ..\obj\sht30.o: ..\USER\stm32f4xx.h
 ..\obj\sht30.o: ..\CORE\core_cm4.h
-..\obj\sht30.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+..\obj\sht30.o: d:\Keil_v526\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\sht30.o: ..\CORE\core_cmInstr.h
 ..\obj\sht30.o: ..\CORE\core_cmFunc.h
 ..\obj\sht30.o: ..\CORE\core_cm4_simd.h

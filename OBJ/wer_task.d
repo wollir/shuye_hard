@@ -5,7 +5,7 @@
 ..\obj\wer_task.o: ..\SYSTEM\sys\sys.h
 ..\obj\wer_task.o: ..\USER\stm32f4xx.h
 ..\obj\wer_task.o: ..\CORE\core_cm4.h
-..\obj\wer_task.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+..\obj\wer_task.o: d:\Keil_v526\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\wer_task.o: ..\CORE\core_cmInstr.h
 ..\obj\wer_task.o: ..\CORE\core_cmFunc.h
 ..\obj\wer_task.o: ..\CORE\core_cm4_simd.h

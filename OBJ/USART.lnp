@@ -1,4 +1,4 @@
---cpu Cortex-M4.fp
+--cpu=Cortex-M4.fp
 "..\obj\adc_conf.o"
 "..\obj\main.o"
 "..\obj\stm32f4xx_it.o"
@@ -25,6 +25,6 @@
 "..\obj\stm32f4xx_i2c.o"
 "..\obj\stm32f4xx_exti.o"
 --strict --scatter "..\OBJ\USART.sct"
---summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "..\OBJ\USART.map" -o ..\OBJ\USART.axf

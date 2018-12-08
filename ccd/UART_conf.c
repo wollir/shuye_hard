@@ -25,7 +25,7 @@ void USART2_conf()
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_25MHz; //100 MHz?
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
-  
+	
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
   

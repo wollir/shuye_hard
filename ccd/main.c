@@ -78,8 +78,10 @@ int main(void)
 /* Setup ICG (TIM5) and SH (TIM2) */
 	TIM_ICG_SH_conf();
 	delay_init(84);
+	
+	//按键中断初始化
 	KEY_Init();
-	EXTI_Config();//按键中断初始化
+	EXTI_Config();
 	//flush_CCD();
 	kalman_init(kal,150,0.01);
 	IIC_Init();

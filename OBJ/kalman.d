@@ -2,7 +2,7 @@
 ..\obj\kalman.o: ..\HARDWARE\calman\kalman.h
 ..\obj\kalman.o: ..\USER\stm32f4xx.h
 ..\obj\kalman.o: ..\CORE\core_cm4.h
-..\obj\kalman.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+..\obj\kalman.o: d:\Keil_v526\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\kalman.o: ..\CORE\core_cmInstr.h
 ..\obj\kalman.o: ..\CORE\core_cmFunc.h
 ..\obj\kalman.o: ..\CORE\core_cm4_simd.h
@@ -35,4 +35,4 @@
 ..\obj\kalman.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\kalman.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\kalman.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
-..\obj\kalman.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\math.h
+..\obj\kalman.o: d:\Keil_v526\ARM\ARMCC\Bin\..\include\math.h
