@@ -77,7 +77,7 @@ int main(void)
 	ADC1_conf();
 /* Setup ICG (TIM5) and SH (TIM2) */
 	TIM_ICG_SH_conf();
-	delay_init(84);
+	delay_init(8*2);
 	
 	//按键中断初始化
 	KEY_Init();
@@ -86,6 +86,7 @@ int main(void)
 	kalman_init(kal,150,0.01);
 	IIC_Init();
 	while(1){
+		wer_send('a');
 		leda(0);
 		delay_ms(1000);
 		leda(1);
