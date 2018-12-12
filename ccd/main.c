@@ -85,6 +85,13 @@ int main(void)
 	//flush_CCD();
 	kalman_init(kal,150,0.01);
 	IIC_Init();
+	while(1){
+		leda(0);
+		delay_ms(1000);
+		leda(1);
+		delay_ms(1000);
+	}
+	
 	
 	while(1) 	
 	{		
@@ -180,32 +187,36 @@ void virtual_GND(void)
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);  
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);  
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF, ENABLE);  
+	//RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF, ENABLE);  
 
-	/* PA0 */
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
-    GPIO_Init(GPIOA, &GPIO_InitStructure);
+//	/* PA0 */
+//	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
+//    GPIO_Init(GPIOA, &GPIO_InitStructure);
 
-	/* PC2 */
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
-    GPIO_Init(GPIOC, &GPIO_InitStructure);
+//	/* PC2 */
+//	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
+//    GPIO_Init(GPIOC, &GPIO_InitStructure);
 
-	/* PB0 and PB2 */
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_2;
-    GPIO_Init(GPIOB, &GPIO_InitStructure);
+//	/* PB0 and PB2 */
+//	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_2;
+//    GPIO_Init(GPIOB, &GPIO_InitStructure);
 
 	/* Setup LED (PA6) Setup LED (PA7) Setup backgruand¡ª_LED (PA4)*/  //---PF9
-#if	(ID == 1)
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6|GPIO_Pin_7|GPIO_Pin_4;
+//#if	(ID == 1)
+//	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6|GPIO_Pin_7|GPIO_Pin_4;
+//  GPIO_Init(GPIOA, &GPIO_InitStructure);
+//	GPIO_ResetBits(GPIOA,GPIO_Pin_4);
+//	GPIO_SetBits(GPIOA,GPIO_Pin_6|GPIO_Pin_7);
+//#else
+//	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8|GPIO_Pin_9|GPIO_Pin_10;
+//  GPIO_Init(GPIOF, &GPIO_InitStructure);
+//	GPIO_ResetBits(GPIOF,GPIO_Pin_8);
+//	GPIO_SetBits(GPIOF,GPIO_Pin_9|GPIO_Pin_10);
+//#endif
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6|GPIO_Pin_7|GPIO_Pin_4|GPIO_Pin_5;
   GPIO_Init(GPIOA, &GPIO_InitStructure);
-	GPIO_ResetBits(GPIOA,GPIO_Pin_4);
+	GPIO_ResetBits(GPIOA,GPIO_Pin_4|GPIO_Pin_5);
 	GPIO_SetBits(GPIOA,GPIO_Pin_6|GPIO_Pin_7);
-#else
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8|GPIO_Pin_9|GPIO_Pin_10;
-  GPIO_Init(GPIOF, &GPIO_InitStructure);
-	GPIO_ResetBits(GPIOF,GPIO_Pin_8);
-	GPIO_SetBits(GPIOF,GPIO_Pin_9|GPIO_Pin_10);
-#endif
 }
 /* Run this function prior to datacollection */
 void flush_CCD()

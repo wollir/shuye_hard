@@ -9,6 +9,7 @@
 #define RealDataSize 3648
 #define UsedSize 60
 #define ID 3
+#define MYBOARD 1
 #define CHANNAL 0X17
 #define wireless
 /* CCD master clock in Hz */
