@@ -86,11 +86,14 @@ int main(void)
 	kalman_init(kal,150,0.01);
 	IIC_Init();
 	while(1){
-		wer_send('a');
-		leda(0);
-		delay_ms(1000);
-		leda(1);
-		delay_ms(1000);
+//				wer_send(0x01);
+//				wer_send(0x00);
+//				wer_send(0x17);
+//		wer_send('a');
+		beep(0);
+		delay_us(10000000);
+		beep(1);
+		delay_us(10000000);
 	}
 	
 	
@@ -216,8 +219,8 @@ void virtual_GND(void)
 //#endif
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6|GPIO_Pin_7|GPIO_Pin_4|GPIO_Pin_5;
   GPIO_Init(GPIOA, &GPIO_InitStructure);
-	GPIO_ResetBits(GPIOA,GPIO_Pin_4|GPIO_Pin_5);
-	GPIO_SetBits(GPIOA,GPIO_Pin_6|GPIO_Pin_7);
+	GPIO_ResetBits(GPIOA,GPIO_Pin_4|GPIO_Pin_7);
+	GPIO_SetBits(GPIOA,GPIO_Pin_6|GPIO_Pin_5);
 }
 /* Run this function prior to datacollection */
 void flush_CCD()

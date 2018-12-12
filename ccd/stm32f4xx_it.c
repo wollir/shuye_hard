@@ -121,14 +121,18 @@ void SysTick_Handler(void)
 {
 
 }
+	static u8 a = 0;
 void EXTI4_IRQHandler(void)
 {   
 	  /*延时消抖*/
 	//wer_send(0x01);wer_send(0x00);wer_send(0x17); wer_send('a');
+
 		delay_ms(10);	  		 
      /*检查指定的EXTI13线路触发请求发生与否*/	
     if(EXTI_GetITStatus(EXTI_Line4) != RESET)
 		{   
+			a = ~a;
+			ledb(a);
 			if(isalert==1){
 				isalert = 0; //不报警了
 				isalerted = 1; // 报警完成
