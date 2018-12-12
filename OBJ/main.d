@@ -42,6 +42,9 @@
 ..\obj\main.o: ..\HARDWARE\sht30\myiic.h
 ..\obj\main.o: ..\ccd\timer_conf.h
 ..\obj\main.o: ..\SYSTEM\delay\delay.h
+..\obj\main.o: .\my_task\wer_delay.h
+..\obj\main.o: ..\CORE\core_cm4.h
+..\obj\main.o: ..\USER\stm32f4xx_it.h
 ..\obj\main.o: ..\ccd\ADC_conf.h
 ..\obj\main.o: ..\ccd\UART_conf.h
 ..\obj\main.o: ..\HARDWARE\calman\kalman.h

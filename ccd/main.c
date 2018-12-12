@@ -3,6 +3,7 @@
 #include "wer_task.h"
 #include "timer_conf.h"
 #include "delay.h"
+#include "wer_delay.h"
 #include "ADC_conf.h"
 #include "UART_conf.h"
 #include "kalman.h"
@@ -77,24 +78,27 @@ int main(void)
 	ADC1_conf();
 /* Setup ICG (TIM5) and SH (TIM2) */
 	TIM_ICG_SH_conf();
-	delay_init(8*2);
-	
+	//delay_init(8*2);
+	Delay_Init();
 	//按键中断初始化
 	KEY_Init();
 	EXTI_Config();
 	//flush_CCD();
 	kalman_init(kal,150,0.01);
 	IIC_Init();
-	while(1){
-//				wer_send(0x01);
-//				wer_send(0x00);
-//				wer_send(0x17);
-//		wer_send('a');
-		beep(0);
-		delay_us(10000000);
-		beep(1);
-		delay_us(10000000);
-	}
+//	while(1){
+////				wer_send(0x01);
+////				wer_send(0x00);
+////				wer_send(0x17);
+////		wer_send('a');
+//		leda(0);
+//		int i = 0;
+//		for(i = 0;i < 10000;i++)
+//			Delay_Us(100);
+//		leda(1);
+//		for(i = 0;i < 10000;i++)
+//			Delay_Us(100);
+//	}
 	
 	
 	while(1) 	
@@ -126,9 +130,6 @@ int main(void)
 			transmit_data_flag = 0;
 //			pc_ready_flag = 0;
 
-			/* Transmit data */
-			// wer_send('o');
-		  // wer_send('k');
 			// i can do anything else here.
 			for(i = 32;i<3680; i++){
 				real_data[i-32] = (u8)(aTxBuffer[i]>>4);   // 将采集到的 16 位数据（实际上是12位的AD值强制转换成8位，其他4位不要了）			

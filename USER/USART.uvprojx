@@ -457,6 +457,11 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\KEY\key.c</FilePath>
             </File>
+            <File>
+              <FileName>wer_delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\my_task\wer_delay.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

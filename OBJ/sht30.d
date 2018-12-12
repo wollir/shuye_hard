@@ -37,4 +37,6 @@
 ..\obj\sht30.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\sht30.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\sht30.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
-..\obj\sht30.o: ..\SYSTEM\delay\delay.h
+..\obj\sht30.o: .\my_task\wer_delay.h
+..\obj\sht30.o: ..\CORE\core_cm4.h
+..\obj\sht30.o: ..\USER\stm32f4xx_it.h

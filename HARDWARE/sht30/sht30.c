@@ -1,5 +1,5 @@
 #include"sht30.h"
-#include"delay.h"
+#include"wer_delay.h"
 void start_mesure()
 {
 	IIC_Start();
@@ -21,7 +21,7 @@ sht_data sht30_read()
 	IIC_Send_Byte(0x89); //0x44地址+1（读）  0x44--0x89   0x45 -- 0x4b
 
 	IIC_Ack();
-	delay_ms(1);  //留出测量的时间
+	Delay_Ms(1);  //留出测量的时间
 	temprature_S = IIC_Read_Byte(1);
 	temprature_L = IIC_Read_Byte(1);
 	crc = IIC_Read_Byte(1);
