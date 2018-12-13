@@ -2,7 +2,7 @@
 #include "wer_task.h"
 #include "UART_conf.h"
 #include "key.h"
-#include "delay.h"
+#include "wer_delay.h"
 __IO u8 echo_pc = 0;
 __IO u8 isalert = 0; //通知上位机是否已经报警
 __IO u8 isalerted = 0;
@@ -121,18 +121,18 @@ void SysTick_Handler(void)
 {
 
 }
-	static u8 a = 0;
+//	static u8 flash = 0;
 void EXTI4_IRQHandler(void)
 {   
 	  /*延时消抖*/
 	//wer_send(0x01);wer_send(0x00);wer_send(0x17); wer_send('a');
 
-		delay_ms(10);	  		 
+		Delay_Ms(20);	  		 
      /*检查指定的EXTI13线路触发请求发生与否*/	
     if(EXTI_GetITStatus(EXTI_Line4) != RESET)
 		{   
-			a = ~a;
-			ledb(a);
+	//		flash = flash? 0:1;
+	//		ledb(flash);
 			if(isalert==1){
 				isalert = 0; //不报警了
 				isalerted = 1; // 报警完成

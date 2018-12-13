@@ -41,4 +41,6 @@
 ..\obj\stm32f4xx_it.o: ..\SYSTEM\sys\sys.h
 ..\obj\stm32f4xx_it.o: ..\ccd\UART_conf.h
 ..\obj\stm32f4xx_it.o: ..\HARDWARE\KEY\key.h
-..\obj\stm32f4xx_it.o: ..\SYSTEM\delay\delay.h
+..\obj\stm32f4xx_it.o: .\my_task\wer_delay.h
+..\obj\stm32f4xx_it.o: ..\CORE\core_cm4.h
+..\obj\stm32f4xx_it.o: ..\USER\stm32f4xx_it.h

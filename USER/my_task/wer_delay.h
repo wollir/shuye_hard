@@ -41,7 +41,7 @@ void Delay_Init(void);					//延时系统初始化
 void Delay_Us(u16 us);				//微秒延时
 void Delay_Ms(u16 ms);				//毫秒延时
 void Delay_Us_2(u32 us);				//微秒延时，范围更大
- 
+void diy_delay_1u(int us);
  
  
  

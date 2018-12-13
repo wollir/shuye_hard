@@ -11,7 +11,7 @@
 #define ID 3
 #define MYBOARD 1
 #define CHANNAL 0X17
-#define wireless
+#define wireless 0
 /* CCD master clock in Hz */
 /* The values presented here are the prescalable frequencies between
    1-2MHz with the STM32F401RE running at 84 MHz. Other frequencies

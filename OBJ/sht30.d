@@ -40,3 +40,5 @@
 ..\obj\sht30.o: .\my_task\wer_delay.h
 ..\obj\sht30.o: ..\CORE\core_cm4.h
 ..\obj\sht30.o: ..\USER\stm32f4xx_it.h
+..\obj\sht30.o: ..\HARDWARE\delay\delay.h
+..\obj\sht30.o: ..\ccd\UART_conf.h

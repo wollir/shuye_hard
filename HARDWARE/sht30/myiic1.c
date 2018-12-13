@@ -1,6 +1,6 @@
 #include "myiic.h"
-//#include "delay.h"
 #include "wer_delay.h"
+#include "UART_conf.h"
 //////////////////////////////////////////////////////////////////////////////////	 
 //本程序只供学习使用，未经作者许可，不得用于其它任何用途
 //ALIENTEK STM32F407开发板
@@ -13,7 +13,9 @@
 //Copyright(C) 广州市星翼电子科技有限公司 2014-2024
 //All rights reserved									  
 ////////////////////////////////////////////////////////////////////////////////// 	
-//#define Delay_Us(a) Delay_Us(a)
+
+#define IIC_Delay_4us() Delay_Us(4)
+#define IIC_Delay_1us() Delay_Us(1)
 
 //初始化IIC
 void IIC_Init(void)
@@ -26,7 +28,7 @@ void IIC_Init(void)
   GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8 | GPIO_Pin_9;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;//普通输出模式
   GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;//推挽输出
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;//100MHz
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;//100MHz
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;//上拉
   GPIO_Init(GPIOB, &GPIO_InitStructure);//初始化
 	IIC_SCL=1;
@@ -38,9 +40,9 @@ void IIC_Start(void)
 	SDA_OUT();     //sda线输出
 	IIC_SDA=1;	  	  
 	IIC_SCL=1;
-	Delay_Us(4);
+	IIC_Delay_4us();
  	IIC_SDA=0;//START:when CLK is high,DATA change form high to low 
-	Delay_Us(4);
+	IIC_Delay_4us();
 	IIC_SCL=0;//钳住I2C总线，准备发送或接收数据 
 }	  
 //产生IIC停止信号
@@ -49,10 +51,10 @@ void IIC_Stop(void)
 	SDA_OUT();//sda线输出
 	IIC_SCL=0;
 	IIC_SDA=0;//STOP:when CLK is high DATA change form low to high
- 	Delay_Us(4);
+ 	IIC_Delay_4us();
 	IIC_SCL=1; 
 	IIC_SDA=1;//发送I2C总线结束信号
-	Delay_Us(4);							   	
+	IIC_Delay_4us();							   	
 }
 //等待应答信号到来
 //返回值：1，接收应答失败
@@ -61,14 +63,15 @@ u8 IIC_Wait_Ack(void)
 {
 	u8 ucErrTime=0;
 	SDA_IN();      //SDA设置为输入  
-	IIC_SDA=1;Delay_Us(1);	   
-	IIC_SCL=1;Delay_Us(1);	 
+	IIC_SDA=1;IIC_Delay_1us();	   
+	IIC_SCL=1;IIC_Delay_1us();	 
 	while(READ_SDA)
 	{
 		ucErrTime++;
 		if(ucErrTime>250)
 		{
 			IIC_Stop();
+			wer_send('f');
 			return 1;
 		}
 	}
@@ -129,7 +132,7 @@ u8 IIC_Read_Byte(unsigned char ack)
 		IIC_SCL=1;
         receive<<=1;
         if(READ_SDA)receive++;   
-		Delay_Us(1); 
+		IIC_Delay_1us(); 
     }					 
     if (!ack)
         IIC_NAck();//发送nACK

@@ -36,5 +36,5 @@
 ..\obj\key.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\key.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\key.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
-..\obj\key.o: ..\SYSTEM\delay\delay.h
+..\obj\key.o: ..\HARDWARE\delay\delay.h
 ..\obj\key.o: ..\ccd\main.h

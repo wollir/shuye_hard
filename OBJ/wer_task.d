@@ -39,5 +39,5 @@
 ..\obj\wer_task.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\wer_task.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\wer_task.o: ..\ccd\main.h
-..\obj\wer_task.o: ..\SYSTEM\delay\delay.h
+..\obj\wer_task.o: ..\HARDWARE\delay\delay.h
 ..\obj\wer_task.o: ..\ccd\UART_conf.h

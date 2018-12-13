@@ -54,6 +54,7 @@ float after_calman[RealDataSize] = {0};
 	PA5 (LED) is enabled (but driven low by default) */
 //u8 kalman_test[10] = {20,40,70,100,200,170,110,150,190,130};
 //u8 kalman_out[10] ={0}; 
+u8 flashled = 0;
 int main(void)
 {
 	int  i= 0;
@@ -78,7 +79,7 @@ int main(void)
 	ADC1_conf();
 /* Setup ICG (TIM5) and SH (TIM2) */
 	TIM_ICG_SH_conf();
-	//delay_init(8*2);
+	//delay_init(21);
 	Delay_Init();
 	//按键中断初始化
 	KEY_Init();
@@ -86,22 +87,35 @@ int main(void)
 	//flush_CCD();
 	kalman_init(kal,150,0.01);
 	IIC_Init();
-//	while(1){
+	while(0){
+		start_mesure();
+		temp_hum = sht30_read();
+		
+		wer_send(temp_hum.humiH);
+		wer_send(temp_hum.humiL);
+		wer_send(temp_hum.tempH);
+		wer_send(temp_hum.tempH);
+			Delay_Ms(1000);
+		//delay_ms(1000);
+	}
+//	while(0){
 ////				wer_send(0x01);
 ////				wer_send(0x00);
 ////				wer_send(0x17);
-////		wer_send('a');
+//		//wer_send('a');
 //		leda(0);
 //		int i = 0;
-//		for(i = 0;i < 10000;i++)
-//			Delay_Us(100);
+//		for(i = 0;i < 10;i++)
+//			Delay_Ms(100);
+//		//diy_delay_1u(12);
+//		//delay_ms(100);
 //		leda(1);
-//		for(i = 0;i < 10000;i++)
-//			Delay_Us(100);
+//		for(i = 0;i < 10;i++)
+//			Delay_Ms(100);
+//		//delay_ms(100);
+//		//diy_delay_1u(12);
 //	}
-	
-	
-	while(1) 	
+	while(1) 
 	{		
 		if (change_exposure_flag == 1)
 		{
@@ -145,7 +159,7 @@ int main(void)
 			}
 			start_mesure();
 			temp_hum = sht30_read();
-#ifdef wireless			
+#if wireless			
 		  wer_send(0x01);wer_send(0x00);wer_send(CHANNAL);// 主机地址
 #endif
 			wer_send(0xfe);wer_send(0x01);
@@ -160,7 +174,7 @@ int main(void)
 			leda(1);
 		}
 		if(echo_pc){   //扫描时候回应
-#ifdef wireless
+#if wireless
 			wer_send(0x01);wer_send(0x00);wer_send(CHANNAL);// 主机地址
 #endif
 			wer_send(0xff);wer_send(0x02);// 扫描帧头

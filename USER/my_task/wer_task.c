@@ -24,7 +24,7 @@ void send_data(unsigned char* data,int datasize)  // ÒªÒÔÊ²Ã´¸ñÊ½·¢ËÍ£¬ÏÈ¿´ÉÏÎ»»
 	for(; i<datasize-4;i++)
 		wer_send(data[i]);
 		//delay_ms(500);
-#ifdef wireless			
+#if wireless			
 		  wer_send(0x01);wer_send(0x00);wer_send(CHANNAL);// Ö÷»úµØÖ·
 #endif
 	for(; i<datasize;i++){

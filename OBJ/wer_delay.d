@@ -1,6 +1,6 @@
 ..\obj\wer_delay.o: my_task\wer_delay.c
-..\obj\wer_delay.o: ..\SYSTEM\delay\Delay.h
-..\obj\wer_delay.o: ..\SYSTEM\sys\sys.h
+..\obj\wer_delay.o: my_task\wer_delay.h
+..\obj\wer_delay.o: ..\FWLIB\inc\stm32f4xx_rcc.h
 ..\obj\wer_delay.o: ..\USER\stm32f4xx.h
 ..\obj\wer_delay.o: ..\CORE\core_cm4.h
 ..\obj\wer_delay.o: d:\Keil_v526\ARM\ARMCC\Bin\..\include\stdint.h
@@ -36,3 +36,5 @@
 ..\obj\wer_delay.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\wer_delay.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\wer_delay.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\wer_delay.o: ..\CORE\core_cm4.h
+..\obj\wer_delay.o: ..\USER\stm32f4xx_it.h

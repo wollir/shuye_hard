@@ -1,5 +1,5 @@
 ..\obj\wer_delay_1.o: my_task\wer_delay.c
-..\obj\wer_delay_1.o: ..\SYSTEM\delay\Delay.h
+..\obj\wer_delay_1.o: ..\HARDWARE\delay\Delay.h
 ..\obj\wer_delay_1.o: ..\SYSTEM\sys\sys.h
 ..\obj\wer_delay_1.o: ..\USER\stm32f4xx.h
 ..\obj\wer_delay_1.o: ..\CORE\core_cm4.h
