@@ -1,6 +1,6 @@
 #include "myiic.h"
-//#include "delay.h"
-#include "wer_delay.h"
+#include "delay.h"
+//#include "wer_delay.h"
 //////////////////////////////////////////////////////////////////////////////////	 
 //本程序只供学习使用，未经作者许可，不得用于其它任何用途
 //ALIENTEK STM32F407开发板
@@ -13,7 +13,7 @@
 //Copyright(C) 广州市星翼电子科技有限公司 2014-2024
 //All rights reserved									  
 ////////////////////////////////////////////////////////////////////////////////// 	
-//#define Delay_Us(a) Delay_Us(a)
+//#define delay_us(a) delay_us(a)
 
 //初始化IIC
 void IIC_Init(void)
@@ -38,9 +38,9 @@ void IIC_Start(void)
 	SDA_OUT();     //sda线输出
 	IIC_SDA=1;	  	  
 	IIC_SCL=1;
-	Delay_Us(4);
+	delay_us(4);
  	IIC_SDA=0;//START:when CLK is high,DATA change form high to low 
-	Delay_Us(4);
+	delay_us(4);
 	IIC_SCL=0;//钳住I2C总线，准备发送或接收数据 
 }	  
 //产生IIC停止信号
@@ -49,10 +49,10 @@ void IIC_Stop(void)
 	SDA_OUT();//sda线输出
 	IIC_SCL=0;
 	IIC_SDA=0;//STOP:when CLK is high DATA change form low to high
- 	Delay_Us(4);
+ 	delay_us(4);
 	IIC_SCL=1; 
 	IIC_SDA=1;//发送I2C总线结束信号
-	Delay_Us(4);							   	
+	delay_us(4);							   	
 }
 //等待应答信号到来
 //返回值：1，接收应答失败
@@ -61,8 +61,8 @@ u8 IIC_Wait_Ack(void)
 {
 	u8 ucErrTime=0;
 	SDA_IN();      //SDA设置为输入  
-	IIC_SDA=1;Delay_Us(1);	   
-	IIC_SCL=1;Delay_Us(1);	 
+	IIC_SDA=1;delay_us(1);	   
+	IIC_SCL=1;delay_us(1);	 
 	while(READ_SDA)
 	{
 		ucErrTime++;
@@ -81,9 +81,9 @@ void IIC_Ack(void)
 	IIC_SCL=0;
 	SDA_OUT();
 	IIC_SDA=0;
-	Delay_Us(2);
+	delay_us(2);
 	IIC_SCL=1;
-	Delay_Us(2);
+	delay_us(2);
 	IIC_SCL=0;
 }
 //不产生ACK应答		    
@@ -92,9 +92,9 @@ void IIC_NAck(void)
 	IIC_SCL=0;
 	SDA_OUT();
 	IIC_SDA=1;
-	Delay_Us(2);
+	delay_us(2);
 	IIC_SCL=1;
-	Delay_Us(2);
+	delay_us(2);
 	IIC_SCL=0;
 }					 				     
 //IIC发送一个字节
@@ -110,11 +110,11 @@ void IIC_Send_Byte(u8 txd)
     {              
         IIC_SDA=(txd&0x80)>>7;
         txd<<=1; 	  
-		Delay_Us(2);   //对TEA5767这三个延时都是必须的
+		delay_us(2);   //对TEA5767这三个延时都是必须的
 		IIC_SCL=1;
-		Delay_Us(2); 
+		delay_us(2); 
 		IIC_SCL=0;	
-		Delay_Us(2);
+		delay_us(2);
     }	 
 } 	    
 //读1个字节，ack=1时，发送ACK，ack=0，发送nACK   
@@ -125,11 +125,11 @@ u8 IIC_Read_Byte(unsigned char ack)
     for(i=0;i<8;i++ )
 	{
         IIC_SCL=0; 
-        Delay_Us(2);
+        delay_us(2);
 		IIC_SCL=1;
         receive<<=1;
         if(READ_SDA)receive++;   
-		Delay_Us(1); 
+		delay_us(1); 
     }					 
     if (!ack)
         IIC_NAck();//发送nACK

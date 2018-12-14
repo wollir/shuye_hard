@@ -79,14 +79,15 @@ int main(void)
 	ADC1_conf();
 /* Setup ICG (TIM5) and SH (TIM2) */
 	TIM_ICG_SH_conf();
-	//delay_init(21);
-	Delay_Init();
+	delay_init(84);
+	//Delay_Init();
 	//按键中断初始化
 	KEY_Init();
 	EXTI_Config();
 	//flush_CCD();
 	kalman_init(kal,150,0.01);
 	IIC_Init();
+	ledb(1);leda(1);
 	while(0){
 		start_mesure();
 		temp_hum = sht30_read();
@@ -95,26 +96,23 @@ int main(void)
 		wer_send(temp_hum.humiL);
 		wer_send(temp_hum.tempH);
 		wer_send(temp_hum.tempH);
-			Delay_Ms(1000);
-		//delay_ms(1000);
+			//Delay_Ms(1000);
+		delay_ms(1000);
 	}
-//	while(0){
-////				wer_send(0x01);
-////				wer_send(0x00);
-////				wer_send(0x17);
-//		//wer_send('a');
-//		leda(0);
-//		int i = 0;
-//		for(i = 0;i < 10;i++)
-//			Delay_Ms(100);
-//		//diy_delay_1u(12);
-//		//delay_ms(100);
-//		leda(1);
-//		for(i = 0;i < 10;i++)
-//			Delay_Ms(100);
-//		//delay_ms(100);
-//		//diy_delay_1u(12);
-//	}
+	while(0){
+		beep(0);
+		leda(0);
+		int i = 0;
+		//	Delay_Ms(1000);
+		//diy_delay_1u(12);
+		delay_ms(1000);
+		back_led(1);
+		beep(1);
+		leda(1);
+		//	Delay_Ms(1000);
+		delay_ms(1000);
+		//diy_delay_1u(12);
+	}
 	while(1) 
 	{		
 		if (change_exposure_flag == 1)
@@ -124,8 +122,8 @@ int main(void)
 
 			flush_CCD();
 			/* set new integration time */
-//			ICG_period = aRxBuffer[6]<<24|aRxBuffer[7]<<16|aRxBuffer[8]<<8|aRxBuffer[9];
-//			SH_period = aRxBuffer[2]<<24|aRxBuffer[3]<<16|aRxBuffer[4]<<8|aRxBuffer[5];
+//			ICG_period = 20000;
+//			SH_period = 30;
 			ICG_period = nRxBuffer[6]<<24|nRxBuffer[7]<<16|nRxBuffer[8]<<8|nRxBuffer[9];   // 设置TIM5的 周期
 			SH_period = nRxBuffer[2]<<24|nRxBuffer[3]<<16|nRxBuffer[4]<<8|nRxBuffer[5];    // 设置TIM2 的周期
 
@@ -146,7 +144,7 @@ int main(void)
 
 			// i can do anything else here.
 			for(i = 32;i<3680; i++){
-				real_data[i-32] = (u8)(aTxBuffer[i]>>4);   // 将采集到的 16 位数据（实际上是12位的AD值强制转换成8位，其他4位不要了）			
+				real_data[i-32] = (u8)((aTxBuffer[i]>>4)&0xff);   // 将采集到的 16 位数据（实际上是12位的AD值强制转换成8位，其他4位不要了）			
 				//real_data[i-32] = (u8)(aTxBuffer[i]|0xff);
 			}		
 			for(i = 0;i<RealDataSize;i++){

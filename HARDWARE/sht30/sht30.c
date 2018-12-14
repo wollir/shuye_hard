@@ -13,8 +13,8 @@ void start_mesure()
 	//IIC_Send_Byte(0x06);
 	IIC_Wait_Ack();
 	IIC_Stop();
-	Delay_Ms(5);
-	//delay_ms(5);
+	//Delay_Ms(5);
+	delay_ms(5);
 }
 sht_data sht30_read()
 {
@@ -28,8 +28,8 @@ sht_data sht30_read()
 	IIC_Wait_Ack();
 	
 	//IIC_Ack();
-	Delay_Ms(5);  //留出测量的时间
-	//	delay_ms(5);
+	//Delay_Ms(5);  //留出测量的时间
+		delay_ms(5);
 	temprature_S = IIC_Read_Byte(1);
 	temprature_L = IIC_Read_Byte(1);
 	crc = IIC_Read_Byte(1);
