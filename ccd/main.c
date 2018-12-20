@@ -15,7 +15,8 @@ void flush_CCD(void);
 void NVIC_conf(void);
 extern __IO u8 isalert; //通知上位机是否已经报警
 extern __IO u8 echo_pc;
-extern __IO u8 isalerted;//下位机是否已经报警完成。同志上位机输液结束
+extern __IO u8 isalerted;
+extern __IO u8 is_update_oled;
 __IO uint32_t SH_period = 25;
 __IO uint32_t ICG_period = 500000;
 //__IO uint32_t SH_period = 250;
@@ -102,6 +103,7 @@ int main(void)
 	while(0){
 		beep(0);
 		leda(0);
+		ledb(0);
 		back_led(0);
 		int i = 0;
 		//	Delay_Ms(1000);
@@ -110,6 +112,7 @@ int main(void)
 		back_led(1);
 		beep(1);
 		leda(1);
+		ledb(1);
 		wer_send('a');
 		//	Delay_Ms(1000);
 		delay_ms(1000);
@@ -171,7 +174,7 @@ int main(void)
 			wer_send(0); //预留
 			back_led(0); //将背光源 关闭
 			//UART2_Tx_DMA();
-			leda(1);
+			leda(1); //close 
 		}
 		if(echo_pc){   //扫描时候回应
 #if wireless
@@ -186,6 +189,13 @@ int main(void)
 			echo_pc = 0;
 			//delay_ms(200);
 			leda(1);
+		}
+		if(is_update_oled){
+			received_res rec_data;
+			recongnitionData(&rec_data,nRxBuffer);
+			//here update oled
+			//ledb(0);
+			is_update_oled = 0;
 		}
 	}
 }

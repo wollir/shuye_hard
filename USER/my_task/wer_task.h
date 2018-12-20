@@ -5,11 +5,21 @@
 
 #include "main.h"
 
+typedef struct {
+	float temp;
+	float hum;
+	float height;
+	float height_diff;
+	u8 alart;
+	u16 id;
+}received_res;
+
 void send_data(unsigned char* data,int datasize);
 void send_data_echo(unsigned char* data,int datasize);
 void led_B2_init(void);
 void SortFrom3648(u8* data,u8* target_data,int target_datasize);
 void send_TempHumi(sht_data data);
+void recongnitionData(received_res* recon_data,volatile uint8_t receive[]);
 
 #define	ledb2(a)      {if(a) GPIO_SetBits(GPIOB,GPIO_Pin_2); else	GPIO_ResetBits(GPIOB,GPIO_Pin_2);}//
 

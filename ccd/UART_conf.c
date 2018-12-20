@@ -121,10 +121,11 @@ void sort_aRxBuffer()
 	/* Examine for byte-shifts in aRxBuffer */
 	for (i = 0; i < RxDataSize; i++)
 	{
-		if ((aRxBuffer[i]==69)&&(aRxBuffer[i+1]==82))
+		if (((aRxBuffer[i]==69)&&(aRxBuffer[i+1]==82)) ||((aRxBuffer[i]==68)&&(aRxBuffer[i+1]==81)))
 			shift = i;
 	}
-	if ((aRxBuffer[RxDataSize-1]==69)&&(aRxBuffer[0]==82))
+	if (((aRxBuffer[RxDataSize-1]==69)&&(aRxBuffer[0]==82)) || 
+		  ((aRxBuffer[RxDataSize-1]==68)&&(aRxBuffer[0]==81)))
 			shift = RxDataSize-1;
 
 	/* If necessary permutate data */

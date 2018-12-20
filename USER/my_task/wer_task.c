@@ -53,3 +53,12 @@ void SortFrom3648(u8* data,u8* target_data,int target_datasize)
         target_data[i/frequency_demultiplication]= data[i];
     }
 }
+void recongnitionData(received_res* recon_data,volatile uint8_t receive[])
+{
+	recon_data->temp = ((float)((receive[2]<<8) + receive[3]))/10;
+	recon_data->hum = ((float)((receive[4]<<8) + receive[5]))/10;
+	recon_data->height = ((float)receive[6])/10;
+	recon_data->height_diff = ((float)receive[7])/10;
+	recon_data->alart = receive[8];
+	recon_data->id = (receive[9]<<8) + receive[10];
+}
