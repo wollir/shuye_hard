@@ -1,44 +1,6 @@
 #include "kalman.h"
 #include "math.h"
-//double  KalmanGain;//  ?????
-//double EstimateCovariance;//?????
-//double MeasureCovariance;//?????
-//double EstimateValue;//???
-////void KalmanFilterInit(void);
-////extern    float  KalmanFilter(float   Measure);
 
-//void KalmanFilterInit(void)
-//{
-// EstimateValue=0;
-// EstimateCovariance=10;
-// MeasureCovariance=2;
-//}
-// 
-//double KalmanFilter(double Measure)
-//{
-//		KalmanGain=EstimateCovariance*sqrt(1/(EstimateCovariance*EstimateCovariance+MeasureCovariance*MeasureCovariance));
-//		//?????????
-//		EstimateValue=EstimateValue+KalmanGain*(Measure-EstimateValue);
-//		//???????
-//		//EstimateCovariance +=sqrt(1-KalmanGain)*EstimateCovariance;
-//		EstimateCovariance +=(1-KalmanGain)*EstimateCovariance;
-//		//??????
-//		//MeasureCovariance +=sqrt(1-KalmanGain)*MeasureCovariance;
-//		MeasureCovariance +=(1-KalmanGain)*MeasureCovariance;
-//		//?????
-//		return EstimateValue;
-//	
-////???????
-////KalmanGain=EstimateCovariance*sqrt(1/(EstimateCovariance*EstimateCovariance+MeasureCovariance*MeasureCovariance));
-//////?????????
-////EstimateValue=EstimateValue+KalmanGain*(Measure-EstimateValue);
-//////???????
-////EstimateCovariance=sqrt(1-KalmanGain)*EstimateCovariance;
-//////??????
-////MeasureCovariance=sqrt(1-KalmanGain)*MeasureCovariance;
-//////?????
-////return EstimateValue;
-//}
 #define win_size 20  //???
 //unsigned char win_temp[win_size];
 void  shift_win_filter(unsigned char* data, int size)   //?????
@@ -85,7 +47,7 @@ float kalman_filter(kalman_struct *kalman_lcw, float measure)
 	kalman_lcw->x = kalman_lcw->A * kalman_lcw->x;
 	kalman_lcw->p = kalman_lcw->A * kalman_lcw->A * kalman_lcw->p + kalman_lcw->q;  /* p(n|n-1)=A^2*p(n-1|n-1)+q */
 
-																					/* Measurement */
+	/* Measurement */
 	kalman_lcw->gain = kalman_lcw->p * kalman_lcw->H / (kalman_lcw->p * kalman_lcw->H * kalman_lcw->H + kalman_lcw->r);
 	kalman_lcw->x = kalman_lcw->x + kalman_lcw->gain * (measure - kalman_lcw->H * kalman_lcw->x);
 	kalman_lcw->p = (1 - kalman_lcw->gain * kalman_lcw->H) * kalman_lcw->p;

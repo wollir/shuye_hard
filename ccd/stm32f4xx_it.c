@@ -185,7 +185,7 @@ void DMA1_Stream5_IRQHandler(void)
 				/* set flags for main-loop */
 				change_exposure_flag = 1;
 				//pc_ready_flag = nRxBuffer[10];
-				back_led(0); //收到正确得东西，将背光源打开
+				back_led(1); //收到正确得东西，将背光源打开
 		}
 	}
 }

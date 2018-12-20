@@ -102,6 +102,7 @@ int main(void)
 	while(0){
 		beep(0);
 		leda(0);
+		back_led(0);
 		int i = 0;
 		//	Delay_Ms(1000);
 		//diy_delay_1u(12);
@@ -109,6 +110,7 @@ int main(void)
 		back_led(1);
 		beep(1);
 		leda(1);
+		wer_send('a');
 		//	Delay_Ms(1000);
 		delay_ms(1000);
 		//diy_delay_1u(12);
@@ -167,7 +169,7 @@ int main(void)
 			wer_send(ID&0xff);
 			wer_send(isalerted);isalerted = 0; //报警标志再设置回来
 			wer_send(0); //预留
-			back_led(1); //将背光源 关闭
+			back_led(0); //将背光源 关闭
 			//UART2_Tx_DMA();
 			leda(1);
 		}

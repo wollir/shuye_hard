@@ -159,7 +159,7 @@ GPIO_InitTypeDef    	GPIO_InitStructure;
      Clear Gate', it seems to function more as a shift gate. Since we want to be able
      to complete a full read of the entire CCD before starting a new read, and a pixel
 	 is clocked out for every 4 fM cycles, the period of ICG must be at least:
-        3694 * 4 = 14776
+        3694 * 4 = 14776                                                                         
 	 because the timer controlling ICG runs with a clock speed identical to fM
 
 	 As the SH and ICG pulses must conform to the four criteria above, so it's
