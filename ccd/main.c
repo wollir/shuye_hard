@@ -9,7 +9,7 @@
 #include "kalman.h"
 #include "myiic.h"
 #include "sht30.h"
-
+#include "oled.h"
 void virtual_GND(void);
 void flush_CCD(void);
 void NVIC_conf(void);
@@ -19,8 +19,7 @@ extern __IO u8 isalerted;
 extern __IO u8 is_update_oled;
 __IO uint32_t SH_period = 25;
 __IO uint32_t ICG_period = 500000;
-//__IO uint32_t SH_period = 250;
-//__IO uint32_t ICG_period = 5000000;
+
 
 __IO uint16_t aTxBuffer[CCDSize];
 __IO uint8_t aRxBuffer[RxDataSize] = {0};
@@ -35,6 +34,7 @@ u8 real_data[RealDataSize];
 u8 sorted_data[UsedSize];
 u8 echo_data[UsedSize];
 float after_calman[RealDataSize] = {0};
+received_res rec_data;
 /* TIM Configuration
 	TIM2/5 are 32 bit and will serve the ICG and SH pulses that may require very long periods.
 	TIM3/4 are 16 bit and will serve the fM (master clock) and ADC clock. 
@@ -89,23 +89,24 @@ int main(void)
 	kalman_init(kal,150,0.01);
 	IIC_Init();
 	ledb(1);leda(1);
-	while(0){
-		start_mesure();
-		temp_hum = sht30_read();
-		
-		wer_send(temp_hum.humiH);
-		wer_send(temp_hum.humiL);
-		wer_send(temp_hum.tempH);
-		wer_send(temp_hum.tempH);
-			//Delay_Ms(1000);
-		delay_ms(1000);
-	}
+	oled_AllInit();
+	display_oled(&rec_data);
+//	received_res test_data;
+//	while(1){
+//		u8 i = 1;
+//		for(i = 0;i<100;i++){
+//			test_data.hum = 123+i;
+//			test_data.temp = 456+i;
+//			test_data.height = 789+i;
+//			display_oled(&test_data);
+//			delay_ms(3000);
+//		}
+//	}
 	while(0){
 		beep(0);
 		leda(0);
 		ledb(0);
 		back_led(0);
-		int i = 0;
 		//	Delay_Ms(1000);
 		//diy_delay_1u(12);
 		delay_ms(1000);
@@ -156,10 +157,12 @@ int main(void)
 				real_data[i] = 255-real_data[i];
 			}			
 			SortFrom3648(real_data,sorted_data,UsedSize);
+			#if KALMAN
 			for(i = 0;i<UsedSize;i++) //¿¨¶ûÂüÂË²¨
 			{
 				sorted_data[i] = (u8)kalman_filter(kal,(float)sorted_data[i]);
 			}
+			#endif
 			start_mesure();
 			temp_hum = sht30_read();
 #if wireless			
@@ -191,10 +194,11 @@ int main(void)
 			leda(1);
 		}
 		if(is_update_oled){
-			received_res rec_data;
 			recongnitionData(&rec_data,nRxBuffer);
+			display_oled(&rec_data);
 			//here update oled
 			//ledb(0);
+			
 			is_update_oled = 0;
 		}
 	}
@@ -216,32 +220,7 @@ void virtual_GND(void)
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);  
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);  
-	//RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF, ENABLE);  
 
-//	/* PA0 */
-//	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
-//    GPIO_Init(GPIOA, &GPIO_InitStructure);
-
-//	/* PC2 */
-//	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
-//    GPIO_Init(GPIOC, &GPIO_InitStructure);
-
-//	/* PB0 and PB2 */
-//	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_2;
-//    GPIO_Init(GPIOB, &GPIO_InitStructure);
-
-	/* Setup LED (PA6) Setup LED (PA7) Setup backgruand¡ª_LED (PA4)*/  //---PF9
-//#if	(ID == 1)
-//	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6|GPIO_Pin_7|GPIO_Pin_4;
-//  GPIO_Init(GPIOA, &GPIO_InitStructure);
-//	GPIO_ResetBits(GPIOA,GPIO_Pin_4);
-//	GPIO_SetBits(GPIOA,GPIO_Pin_6|GPIO_Pin_7);
-//#else
-//	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8|GPIO_Pin_9|GPIO_Pin_10;
-//  GPIO_Init(GPIOF, &GPIO_InitStructure);
-//	GPIO_ResetBits(GPIOF,GPIO_Pin_8);
-//	GPIO_SetBits(GPIOF,GPIO_Pin_9|GPIO_Pin_10);
-//#endif
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6|GPIO_Pin_7|GPIO_Pin_4|GPIO_Pin_5;
   GPIO_Init(GPIOA, &GPIO_InitStructure);
 	GPIO_ResetBits(GPIOA,GPIO_Pin_4|GPIO_Pin_7);

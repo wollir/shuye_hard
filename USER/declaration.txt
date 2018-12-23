@@ -11,5 +11,8 @@ IO 占用情况：
 			PB9 -- SDA
 sht30地址：0x44/0x45
 
+IIC oled: PB5 -- SCL
+		  PB6 -- SDA
+
 	  
 	  

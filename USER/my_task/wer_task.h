@@ -6,10 +6,10 @@
 #include "main.h"
 
 typedef struct {
-	float temp;
-	float hum;
-	float height;
-	float height_diff;
+	u16 temp;
+	u16 hum;
+	u16 height;
+	u16 height_diff;
 	u8 alart;
 	u16 id;
 }received_res;
@@ -20,7 +20,9 @@ void led_B2_init(void);
 void SortFrom3648(u8* data,u8* target_data,int target_datasize);
 void send_TempHumi(sht_data data);
 void recongnitionData(received_res* recon_data,volatile uint8_t receive[]);
-
+void oled_AllInit(void);
+void oled_test1(void);
+void display_oled(received_res* recon_data);
 #define	ledb2(a)      {if(a) GPIO_SetBits(GPIOB,GPIO_Pin_2); else	GPIO_ResetBits(GPIOB,GPIO_Pin_2);}//
 
 #define	ledA4(a)      {if(a) GPIO_SetBits(GPIOA,GPIO_Pin_4); else	GPIO_ResetBits(GPIOA,GPIO_Pin_4);}//

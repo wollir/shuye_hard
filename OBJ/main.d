@@ -48,3 +48,5 @@
 ..\obj\main.o: ..\ccd\ADC_conf.h
 ..\obj\main.o: ..\ccd\UART_conf.h
 ..\obj\main.o: ..\HARDWARE\calman\kalman.h
+..\obj\main.o: ..\HARDWARE\OLED\oled.h
+..\obj\main.o: d:\Keil_v526\ARM\ARMCC\Bin\..\include\stdlib.h

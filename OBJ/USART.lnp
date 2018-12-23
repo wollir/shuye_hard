@@ -13,6 +13,7 @@
 "..\obj\myiic.o"
 "..\obj\sht30.o"
 "..\obj\key.o"
+"..\obj\oled.o"
 "..\obj\startup_stm32f40_41xxx.o"
 "..\obj\misc.o"
 "..\obj\stm32f4xx_gpio.o"

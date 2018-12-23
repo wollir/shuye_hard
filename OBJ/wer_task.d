@@ -41,3 +41,6 @@
 ..\obj\wer_task.o: ..\ccd\main.h
 ..\obj\wer_task.o: ..\HARDWARE\delay\delay.h
 ..\obj\wer_task.o: ..\ccd\UART_conf.h
+..\obj\wer_task.o: ..\HARDWARE\OLED\oled.h
+..\obj\wer_task.o: d:\Keil_v526\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\wer_task.o: ..\HARDWARE\OLED\bmp.h

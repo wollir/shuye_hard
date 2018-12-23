@@ -11,7 +11,8 @@
 #define ID 3
 #define MYBOARD 1
 #define CHANNAL 0X17
-#define wireless 0
+#define wireless 0  //是否用无线
+#define KALMAN 1   //是否要卡尔曼滤波
 /* CCD master clock in Hz */
 /* The values presented here are the prescalable frequencies between
    1-2MHz with the STM32F401RE running at 84 MHz. Other frequencies
